@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": false,
+    "noEmitOnError": true,
+    "removeComments": false,
+    "sourceMap": true,
+    "target": "ESNext"
+  },
+  "exclude": [
+    "node_modules",
+    "wwwroot"
+  ]
+}

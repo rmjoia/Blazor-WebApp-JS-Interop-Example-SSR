@@ -1,0 +1,28 @@
+﻿@page "/contacts"
+
+@inject IJSRuntime JS
+
+<h3>Contacts</h3>
+
+<button @onclick="DoStuff">Notify</button>
+
+@code {
+    IJSObjectReference? module;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            module = await JS.InvokeAsync<IJSObjectReference>("import",
+                "./Components/Pages/Contacts.razor.js");
+
+            await JS.InvokeVoidAsync("alert", "Contacts page is rendered");
+        }
+
+        await base.OnAfterRenderAsync(firstRender);
+    }
+    private async Task DoStuff(MouseEventArgs e)
+    {
+        await JS.InvokeVoidAsync("alert", "Doing Stuff!");
+    }
+}
